@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderStatisticsAggDAO {
     private String month;
-    private int orderCount;
+    private int totalOrderCount;
     private int totalBookCount;
-    private double totalAmount;
+    private double totalPurchasedAmount;
 }

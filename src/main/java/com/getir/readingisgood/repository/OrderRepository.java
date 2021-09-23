@@ -22,7 +22,7 @@ public interface OrderRepository extends MongoRepository<Order, String> {
     @Aggregation(pipeline = {
             "{$group: {_id: { month: { $month: $createdAt }},\n" +
                     "orderCount: {$sum: 1}, totalBookCount: {$sum: $amount},\n" +
-                    "totalAmount: {$sum: $totalPrice}}},\n" +
+                    "totalAmount: {$sum: {$multiply : ['$amount' , '$price']}  }}},\n" +
                     "{$project: { 'month': '$_id.month', '_id': 0,\n" +
                     "'orderCount': '$orderCount','totalBookCount': '$totalBookCount',\n" +
                     "'totalAmount': '$totalAmount'    }}"

@@ -73,8 +73,8 @@ public class OrderService {
     }
 
 
-    public List<Order> getOrdersByCustomerId(String customerId, Integer pageNo, Integer pageSize, String sortBy) {
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+    public List<Order> getOrdersByCustomerId(String customerId, Integer pageNumber, Integer pageSize, String sortBy) {
+        Pageable paging = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
 
         Page<Order> customerOrders = orderRepository.findAllByCustomerId(customerId, paging);
 
@@ -111,7 +111,7 @@ public class OrderService {
     public List<OrderMonthsAggDAO> groupOrderMonths() {
 
         Aggregation agg = newAggregation(
-                project("orderId").and(DateOperators.Month.month("$created")).as("month"),
+                project("orderId").and(DateOperators.Month.month("$createdAt")).as("month"),
                 group("month").count().as("orderCount"),
                 project("orderCount").and("month").previousOperation()
         );
