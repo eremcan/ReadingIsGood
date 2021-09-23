@@ -6,7 +6,6 @@ import com.getir.readingisgood.dto.request.BookUpdateRequest;
 import com.getir.readingisgood.dto.request.OrderRequest;
 import com.getir.readingisgood.entity.Book;
 import com.getir.readingisgood.entity.Order;
-
 import com.getir.readingisgood.entity.OrderMonthsAggDAO;
 import com.getir.readingisgood.entity.OrderStatisticsAggDAO;
 import com.getir.readingisgood.exceptions.BookServiceException;
@@ -27,7 +26,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.DateOperators;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -78,11 +76,10 @@ public class OrderService {
     public List<Order> getOrdersByCustomerId(String customerId, Integer pageNo, Integer pageSize, String sortBy) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<Order> pagedResult = orderRepository.findAllByCustomerId(customerId, paging);
+        Page<Order> customerOrders = orderRepository.findAllByCustomerId(customerId, paging);
 
-
-        if (pagedResult.hasContent()) {
-            return pagedResult.getContent();
+        if (customerOrders.hasContent()) {
+            return customerOrders.getContent();
         }
         throw buildException(OrderServiceException.Exception.CUSTOMER_HAS_NO_ORDER, customerId);
     }
