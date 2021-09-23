@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: root
+      password: password
+      database: getir
+      port: 27017
+      host: localhost
