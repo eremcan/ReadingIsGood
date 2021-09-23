@@ -68,6 +68,23 @@ public class BookService {
 
     }
 
+    @Transactional
+    public Book updateBookStockForOrder(BookUpdateRequest bookUpdateRequest) {
+        Book book = bookRepository.findById(bookUpdateRequest.getBookId())
+                .orElseThrow(
+                        () -> buildException(BookServiceException.Exception.BOOK_NOT_FOUND, bookUpdateRequest.getBookId()));
+
+        if (book.getStock() + bookUpdateRequest.getStock() < 0) {
+            throw buildException(BookServiceException.Exception.STOCK_LOWER_ZERO);
+        }
+
+        book.setStock(book.getStock() + bookUpdateRequest.getStock());
+        book.setUpdatedAt(LocalDateTime.now());
+        bookRepository.save(book);
+        return book;
+
+    }
+
     public BookDto convertToBookDto(Book book) {
         return modelMapper.map(book, BookDto.class);
     }
