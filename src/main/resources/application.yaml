@@ -7,3 +7,7 @@ spring:
       database: getir
       port: 27017
       host: localhost
+getir-security:
+  username: getir
+  password: password
+  secret: fqKqe2WKiCOJNMMoRmB9/TqqK2GHUbmA94VHJ3yijMgHISWYBi5lZDv+iIGByGOAfdl351tmSg1v3RyasaulxQ==
