@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping(path = "/book", produces = "application/json")
+@RequestMapping(path = "/books", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class BookController {
 

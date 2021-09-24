@@ -1,0 +1,265 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Getir-ReadingIsGOod",
+		"_postman_id": "b994988f-c4ad-3db1-7816-335215e16acf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customers",
+			"description": "",
+			"item": [
+				{
+					"name": "addCustomer",
+					"request": {
+						"url": "localhost:8080/customers/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXNzd29yZCIsImlhdCI6MTYzMjQ3NjkzMCwiZXhwIjoxNjMyNDk0OTMwfQ.aaR7WkMJpkpmQAqdlDiYT5MTpg7pY5bXB2LUyQ11ErE",
+								"description": ""
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Cagatay\",\n    \"lastName\": \"Erem\",\n    \"email\": \"cagatayerem1@gmail.com\",\n    \"address\": \"Sancaktepe Veysel karani Mah.\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getOrdersByCustomerId",
+					"request": {
+						"url": {
+							"raw": "localhost:8080/customers/614da837243a963a67acb44a/orders?pageNumber=0&pageSize=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"614da837243a963a67acb44a",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXNzd29yZCIsImlhdCI6MTYzMjQ3NjkzMCwiZXhwIjoxNjMyNDk0OTMwfQ.aaR7WkMJpkpmQAqdlDiYT5MTpg7pY5bXB2LUyQ11ErE",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "books",
+			"description": "",
+			"item": [
+				{
+					"name": "addBook",
+					"request": {
+						"url": "localhost:8080/books/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookName\": \"Suc Ve Ceza\",\n    \"bookAuthor\": \"Dostoyevski\",\n    \"price\": 10.10,\n    \"stock\": 30\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "updateStock",
+					"request": {
+						"url": "localhost:8080/books/",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": \":bookid\",\n    \"amount\": 20\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "bookById",
+					"request": {
+						"url": {
+							"raw": "localhost:8080/books/:Id/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								":Id",
+								""
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "Id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"description": "",
+			"item": [
+				{
+					"name": "addOrder",
+					"request": {
+						"url": "localhost:8080/orders/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"60c7ed7f8ac44f6d3673d752\",\n    \"bookId\": \"60c7b6af0b4fdc491b64fdbe\",\n    \"amount\": 2\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getOrdersByDateIn",
+					"request": {
+						"url": {
+							"raw": "localhost:8080/orders/list?startDate=2021-11-11T00:00:00.00&endDate=2022-11-11T22:00:00.00",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"list"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-11-11T00:00:00.00",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "endDate",
+									"value": "2022-11-11T22:00:00.00",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "statistics",
+			"description": "",
+			"item": [
+				{
+					"name": "monthlyOrderStatistics",
+					"request": {
+						"url": "{{url}}/statistics",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"request": {
+				"url": "localhost:8080/auth/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"username\",\n    \"password\": \"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

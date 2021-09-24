@@ -7,6 +7,8 @@ spring:
       database: getir
       port: 27017
       host: localhost
+  messages:
+    basename: messages
 
 getir-security:
   username: getir
