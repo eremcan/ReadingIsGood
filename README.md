@@ -74,7 +74,7 @@ For Ex: Bearer header.payload.signature
     - Spring AOP (For Demo purposes)
     - Swagger3 
     - Lombok
-    - Localization (for Only specific errors)
+    - Localization (for only specific errors)
 - Docker
 - MongoDb
 
