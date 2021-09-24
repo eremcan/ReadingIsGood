@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  readingisgood:
+    build: .
+    image: eremcan/readingisgood
+    container_name: readingisgood
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATA_MONGODB_.HOST=mongodb
+
+volumes:
+  data: { }
+
+networks:
+  default:
+    name: default_network
