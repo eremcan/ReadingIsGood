@@ -2,7 +2,6 @@ package com.getir.readingisgood.customer;
 
 import com.getir.readingisgood.controller.CustomerController;
 import com.getir.readingisgood.dto.request.CustomerRequest;
-import com.getir.readingisgood.entity.Customer;
 import com.getir.readingisgood.repository.CustomerRepository;
 import com.getir.readingisgood.repository.OrderRepository;
 import com.getir.readingisgood.service.BookService;
@@ -38,8 +37,6 @@ public class CustomerControllerTest {
 
     @Test
     public void testAddCustomer() {
-        Customer customer = new Customer("Dosto", "Yevski", "dostoyevski@gmail.com", "Deneme Adres");
-
         CustomerRepository customerRepository = mock(CustomerRepository.class);
 
         when(customerRepository.findCustomerByEmail(anyString())).thenReturn(Optional.empty());
@@ -48,5 +45,6 @@ public class CustomerControllerTest {
         customerController.addCustomer(new CustomerRequest("Dosto", "Yevski", "dostoyevski@gmail.com", "Deneme Adres"));
         verify(customerRepository).findCustomerByEmail(anyString());
     }
+
 
 }
